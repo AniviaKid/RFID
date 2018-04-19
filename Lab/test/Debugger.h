@@ -19,6 +19,7 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CDebugger)
 	enum { IDD = IDD_DEBUGGER };
+	CEdit	m_ins_state;
 	CEdit	m_serial_number;
 	//}}AFX_DATA
 
@@ -37,6 +38,7 @@ protected:
 	//{{AFX_MSG(CDebugger)
 	virtual void OnOK();
 	afx_msg void OnFindCard();
+	afx_msg void OnStartIns();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

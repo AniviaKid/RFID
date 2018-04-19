@@ -28,6 +28,7 @@ void CDebugger::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CDebugger)
+	DDX_Control(pDX, IDC_EDIT_STATE, m_ins_state);
 	DDX_Control(pDX, IDC_EDIT_NUMBER, m_serial_number);
 	//}}AFX_DATA_MAP
 }
@@ -36,6 +37,7 @@ void CDebugger::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CDebugger, CDialog)
 	//{{AFX_MSG_MAP(CDebugger)
 	ON_BN_CLICKED(IDC_FIND_CARD, OnFindCard)
+	ON_BN_CLICKED(ID_START_INS, OnStartIns)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -54,36 +56,25 @@ void CDebugger::OnFindCard()
 {
 	// TODO: Add your control notification handler code here
 	// TODO: Add your control notification handler code here
-	IDD_PowerOn();
-	unsigned char uid[50]=new unsigned char[50];
-	int* uid_len=new int;
-	int state=find_14443(uid,uid_len);
-	CString uid_res;
-	uid_res.Format("%X",uid);
-	/*for(int i=0;i<*uid_len;i++){
-		tem.Format("%02X",uid[i]);
-		uid_res += tem;
-	}*/
-	CString sta;
-	sta.Format("%d",state);
-	MessageBox(sta);
-	if(state==0) m_serial_number.SetWindowText(uid_res);
-	
-	/*int tmp=IDD_PowerOn();
 	unsigned char uid[50];
 	int* uid_len=new int;
 	int state=find_14443(uid,uid_len);
-	CString uid_res = "", tem;
-	
+	CString uid_res,temp;
+	//uid_res.Format("%X",uid);
 	for(int i=0;i<*uid_len;i++){
-		tem.Format("%02X",uid[i]);
-		uid_res += tem;
+		temp.Format("%02X",uid[i]);
+		uid_res += temp;
 	}
 	CString sta;
 	sta.Format("%d",state);
 	MessageBox(sta);
-	m_serial_number.SetWindowText(uid_res);
-	/*delete uid;
-	delete uid_len;*/
-	//IDD_PowerOff();
+	if(state==0) m_serial_number.SetWindowText(uid_res);
+}
+
+void CDebugger::OnStartIns() 
+{
+	// TODO: Add your control notification handler code here
+	int state=IDD_PowerOn();
+	if(state==0) m_ins_state.SetWindowText("开场成功");
+	else m_ins_state.SetWindowText("开场失败");
 }

@@ -128,6 +128,6 @@ HeaderFile=Debugger.h
 ImplementationFile=Debugger.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=CDebugger
+LastObject=IDC_EDIT_STATE
 VirtualFilter=dWC
 
