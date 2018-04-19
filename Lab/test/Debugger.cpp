@@ -53,19 +53,37 @@ void CDebugger::OnOK()
 void CDebugger::OnFindCard() 
 {
 	// TODO: Add your control notification handler code here
-	//m_serial_number.SetWindowText("–°÷Ì≈Â∆Ê");
+	// TODO: Add your control notification handler code here
 	IDD_PowerOn();
-	unsigned char* uid=new unsigned char[50];
-	int* uid_len=new int[50];
+	unsigned char uid[50]=new unsigned char[50];
+	int* uid_len=new int;
 	int state=find_14443(uid,uid_len);
-	//char* uid_res=new char[50];
 	CString uid_res;
 	uid_res.Format("%X",uid);
 	/*for(int i=0;i<*uid_len;i++){
-		*(uid_res+i)=*(uid+i);
+		tem.Format("%02X",uid[i]);
+		uid_res += tem;
 	}*/
+	CString sta;
+	sta.Format("%d",state);
+	MessageBox(sta);
 	if(state==0) m_serial_number.SetWindowText(uid_res);
-	delete uid;
-	delete uid_len;
-	IDD_PowerOff();
+	
+	/*int tmp=IDD_PowerOn();
+	unsigned char uid[50];
+	int* uid_len=new int;
+	int state=find_14443(uid,uid_len);
+	CString uid_res = "", tem;
+	
+	for(int i=0;i<*uid_len;i++){
+		tem.Format("%02X",uid[i]);
+		uid_res += tem;
+	}
+	CString sta;
+	sta.Format("%d",state);
+	MessageBox(sta);
+	m_serial_number.SetWindowText(uid_res);
+	/*delete uid;
+	delete uid_len;*/
+	//IDD_PowerOff();
 }
