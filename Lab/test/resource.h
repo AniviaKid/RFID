@@ -14,19 +14,19 @@
 #define IDC_EDIT_NUMBER                 1003
 #define IDC_FIND_CARD                   1004
 #define ID_START_INS                    1005
-#define IDC_COMBO2                      1009
-#define IDC_EDIT1                       1010
-#define IDC_COMBO3                      1011
-#define IDC_EDIT2                       1012
-#define IDC_EDIT3                       1013
-#define IDC_EDIT4                       1014
-#define IDC_BUTTON1                     1015
-#define IDC_BUTTON2                     1016
-#define IDC_BUTTON3                     1017
-#define IDC_RADIO1                      1018
-#define IDC_RADIO2                      1019
-#define IDC_EDIT5                       1020
-#define IDC_BUTTON4                     1021
+#define IDC_CARD_WR_SECTOR_COMBO        1009
+#define IDC_CARD_WR_BLOCK0_EDIT         1010
+#define IDC_CARD_WR_BLOCK_COMBO         1011
+#define IDC_CARD_WR_BLOCK1_EDIT         1012
+#define IDC_CARD_WR_BLOCK2_EDIT         1013
+#define IDC_CARD_WR_BLOCK3_EDIT1        1014
+#define IDC_READ_SECTOR                 1015
+#define IDC_READ_BLOCK                  1016
+#define IDC_WRITE_BLOCK                 1017
+#define IDC_RADIO_A_PASSWORD            1018
+#define IDC_RADIO_B_PASSWORD            1019
+#define IDC_PASSWORD_EDIT               1020
+#define IDC_DEFAULT_PASSWORD            1021
 #define IDC_COMBO4                      1022
 #define IDC_COMBO5                      1023
 #define IDC_EDIT6                       1024
@@ -37,15 +37,16 @@
 #define IDC_EDIT9                       1029
 #define IDC_BUTTON7                     1030
 #define IDC_BUTTON8                     1031
-#define IDC_COMBOBOXEX1                 1036
+#define IDC_CARD_WR_BLOCK3_EDIT2        1037
+#define IDC_CARD_WR_BLOCK3_EDIT3        1038
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        131
+#define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1037
+#define _APS_NEXT_CONTROL_VALUE         1039
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

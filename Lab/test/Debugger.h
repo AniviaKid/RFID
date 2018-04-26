@@ -19,6 +19,15 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CDebugger)
 	enum { IDD = IDD_DEBUGGER };
+	CEdit	m_password_edit;
+	CComboBox	m_card_wr_block_combo;
+	CComboBox	m_card_wr_sector_combo;
+	CEdit	m_block3_edit3;
+	CEdit	m_block3_edit2;
+	CEdit	m_block3_edit1;
+	CEdit	m_block2_edit;
+	CEdit	m_block1_edit;
+	CEdit	m_block0_edit;
 	CEdit	m_ins_state;
 	CEdit	m_serial_number;
 	//}}AFX_DATA
@@ -36,9 +45,14 @@ protected:
 
 	// Generated message map functions
 	//{{AFX_MSG(CDebugger)
-	virtual void OnOK();
 	afx_msg void OnFindCard();
 	afx_msg void OnStartIns();
+	afx_msg void OnReadBlock();
+	afx_msg void OnReadSector();
+	afx_msg void OnWriteBlock();
+	afx_msg void OnDefaultPassword();
+	afx_msg void Clear_WR_View();
+	afx_msg void Transform_CString_to_UnsignedChar(CString str,unsigned char* ch);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
