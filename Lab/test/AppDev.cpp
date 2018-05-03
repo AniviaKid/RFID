@@ -56,7 +56,42 @@ END_MESSAGE_MAP()
 void CAppDev::OnInitWalletButton() 
 {
 	// TODO: Add your control notification handler code here
-	
+	if(now_password.IsEmpty()) MessageBox("请输入密钥");
+	else {
+		if(now_psw_type!=0x0A&&now_psw_type!=0x0B){
+			MessageBox("请选择密钥类型");
+			return;
+		}
+		
+		unsigned char psw[6];
+		now_password.MakeUpper();
+		Transform_CString_to_UnsignedChar(now_password,psw);
+		
+		int cur_page=m_wallet_sector_combo.GetCurSel();
+		int cur_block=m_wallet_block_combo.GetCurSel();
+		if(cur_page==-1) MessageBox("请选择扇区");
+		else if(cur_block==-1) MessageBox("请选择块");
+		else {
+			long init_account;
+			CString str;
+			m_balance_edit.GetWindowText(str);
+			if(str.IsEmpty()){
+				MessageBox("请输入初始化金额");
+				return;
+			}
+			init_account=_ttoi(str);
+			
+			int return_state=write_account(cur_page,cur_block,now_psw_type,psw,init_account);
+			if(return_state!=0){
+				CString tmp;
+				tmp.Format("%d",return_state);
+				m_state_edit.SetWindowText("初始化失败,状态码为"+tmp);
+				return;
+			}
+			
+			m_state_edit.SetWindowText("初始化成功");
+		}
+	}
 }
 
 void CAppDev::OnInquireBalanceButton() 
@@ -157,7 +192,7 @@ void CAppDev::OnPayButton()
 		if(cur_page==-1) MessageBox("请选择扇区");
 		else if(cur_block==-1) MessageBox("请选择块");
 		else {
-			long subAccount;
+			long subAccount,account;
 			CString sub_str;
 			m_pay_edit.GetWindowText(sub_str);
 			if(sub_str.IsEmpty()){
@@ -166,15 +201,24 @@ void CAppDev::OnPayButton()
 			}
 			subAccount=_ttoi(sub_str);
 			
-			
-			int return_state=sub_account(cur_page,cur_block,now_psw_type,psw,subAccount);
-			if(return_state!=0){
+			int return_state_read=read_account(cur_page,cur_block,now_psw_type,psw,&account);
+			if(return_state_read!=0){
 				CString tmp;
-				tmp.Format("%d",return_state);
-				m_state_edit.SetWindowText("扣费失败,状态码为"+tmp);
+				tmp.Format("%d",return_state_read);
+				m_state_edit.SetWindowText("读取余额失败,状态码为"+tmp);
 				return;
 			}
-			m_state_edit.SetWindowText("扣费成功");
+			if(subAccount>account) MessageBox("卡内余额不足,扣费失败");
+			else {
+				int return_state_sub=sub_account(cur_page,cur_block,now_psw_type,psw,subAccount);
+				if(return_state_sub!=0){
+					CString tmp;
+					tmp.Format("%d",return_state_sub);
+					m_state_edit.SetWindowText("扣费失败,状态码为"+tmp);
+					return;
+				}
+				m_state_edit.SetWindowText("扣费成功");
+			}
 		}
 	}
 }
