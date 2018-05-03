@@ -13,13 +13,13 @@ Class2=CTestDlg
 Class3=CAboutDlg
 
 ResourceCount=5
-Resource1=IDD_DEBUGGER
+Resource1=IDD_TEST_DIALOG
 Resource2=IDR_MAINFRAME
-Resource3=IDD_TEST_DIALOG
+Resource3=IDD_APPDEV
 Class4=CAppDev
 Resource4=IDD_ABOUTBOX
 Class5=CDebugger
-Resource5=IDD_APPDEV
+Resource5=IDD_DEBUGGER
 
 [CLS:CTestApp]
 Type=0
@@ -60,7 +60,7 @@ Control1=IDC_TAB1,SysTabControl32,1342177280
 [DLG:IDD_APPDEV]
 Type=1
 Class=CAppDev
-ControlCount=19
+ControlCount=21
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_STATIC,static,1342308352
 Control3=IDC_WALLET_SECTOR_COMBO,combobox,1344340226
@@ -79,7 +79,9 @@ Control15=IDC_STATE_EDIT,edit,1484849280
 Control16=IDC_RECHARGE_BUTTON,button,1342242816
 Control17=IDC_PAY_BUTTON,button,1342242816
 Control18=IDC_STATIC,button,1342177287
-Control19=IDC_HISTORY_EDIT,edit,1476460676
+Control19=IDC_HISTORY_EDIT,edit,1476464772
+Control20=IDC_REMOVE_HISTORY,button,1342242816
+Control21=IDC_INQUIRE_HISTORY,button,1342242816
 
 [CLS:CAppDev]
 Type=0
@@ -87,7 +89,7 @@ HeaderFile=AppDev.h
 ImplementationFile=AppDev.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_BALANCE_EDIT
+LastObject=IDC_INQUIRE_HISTORY
 VirtualFilter=dWC
 
 [DLG:IDD_DEBUGGER]

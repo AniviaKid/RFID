@@ -31,6 +31,7 @@ void CAppDev::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CAppDev)
+	DDX_Control(pDX, IDC_HISTORY_EDIT, m_history_edit);
 	DDX_Control(pDX, IDC_STATE_EDIT, m_state_edit);
 	DDX_Control(pDX, IDC_RECHARGE_EDIT, m_recharge_edit);
 	DDX_Control(pDX, IDC_PAY_EDIT, m_pay_edit);
@@ -47,6 +48,8 @@ BEGIN_MESSAGE_MAP(CAppDev, CDialog)
 	ON_BN_CLICKED(IDC_INQUIRE_BALANCE_BUTTON, OnInquireBalanceButton)
 	ON_BN_CLICKED(IDC_RECHARGE_BUTTON, OnRechargeButton)
 	ON_BN_CLICKED(IDC_PAY_BUTTON, OnPayButton)
+	ON_BN_CLICKED(IDC_REMOVE_HISTORY, OnRemoveHistory)
+	ON_BN_CLICKED(IDC_INQUIRE_HISTORY, OnInquireHistory)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -80,7 +83,7 @@ void CAppDev::OnInitWalletButton()
 				return;
 			}
 			init_account=_ttoi(str);
-			Write_To_History(INIT_WALLET_MODE,(int)init_account);
+			//Write_To_History(INIT_WALLET_MODE,(int)init_account);
 			
 			int return_state=write_account(cur_page,cur_block,now_psw_type,psw,init_account);
 			if(return_state!=0){
@@ -90,7 +93,7 @@ void CAppDev::OnInitWalletButton()
 				return;
 			}
 			
-			//Write_To_History(1,(int)init_account);
+			Write_To_History(1,(int)init_account);
 			m_state_edit.SetWindowText("初始化成功");
 		}
 	}
@@ -161,7 +164,7 @@ void CAppDev::OnRechargeButton()
 				return;
 			}
 			addAccount=_ttoi(add_str);
-			Write_To_History(RECHARGE_MODE,(int)addAccount);
+			//Write_To_History(RECHARGE_MODE,(int)addAccount);
 			
 			int return_state=add_account(cur_page,cur_block,now_psw_type,psw,addAccount);
 			if(return_state!=0){
@@ -170,7 +173,7 @@ void CAppDev::OnRechargeButton()
 				m_state_edit.SetWindowText("充值失败,状态码为"+tmp);
 				return;
 			}
-			//Write_To_History(RECHARGE_MODE,(int)addAccount);
+			Write_To_History(RECHARGE_MODE,(int)addAccount);
 			m_state_edit.SetWindowText("充值成功");
 		}
 	}
@@ -203,7 +206,7 @@ void CAppDev::OnPayButton()
 				return;
 			}
 			subAccount=_ttoi(sub_str);
-			Write_To_History(PAY_MODE,(int)subAccount);
+			//Write_To_History(PAY_MODE,(int)subAccount);
 			
 			int return_state_read=read_account(cur_page,cur_block,now_psw_type,psw,&account);
 			if(return_state_read!=0){
@@ -221,7 +224,7 @@ void CAppDev::OnPayButton()
 					m_state_edit.SetWindowText("扣费失败,状态码为"+tmp);
 					return;
 				}
-				//Write_To_History(PAY_MODE,(int)subAccount);
+				Write_To_History(PAY_MODE,(int)subAccount);
 				m_state_edit.SetWindowText("扣费成功");
 			}
 		}
@@ -248,19 +251,43 @@ void CAppDev::Transform_CString_to_UnsignedChar(CString str,unsigned char* res){
 }
 
 void CAppDev::Write_To_History(int mode,int number){
-	CFile file_mode,file_num;
-	file_mode.Open(FILE_MODE_NAME,CFile::modeCreate|CFile::modeNoTruncate|CFile::modeReadWrite);
-	file_num.Open(FILE_NUMBER_NAME,CFile::modeCreate|CFile::modeNoTruncate|CFile::modeReadWrite);
-	CString tmp;
-	tmp.Format("%d\r\n",mode);
-	file_mode.SeekToEnd();
-	file_mode.Write(tmp,strlen(tmp));
-	tmp.Empty();
-	tmp.Format("%d\r\n",number);
-	file_num.SeekToEnd();
-	file_num.Write(tmp,strlen(tmp));
+	CFile file;
+	file.Open(FILE_NAME,CFile::modeCreate|CFile::modeNoTruncate|CFile::modeReadWrite);
+	CString tmp,tmp2;
+	if(mode==INIT_WALLET_MODE) tmp="Init Wallet Money:";
+	else if(mode==RECHARGE_MODE) tmp="Recharge:";
+	else if(mode==PAY_MODE) tmp="Pay:";
+	tmp2.Format("%d\r\n",number);
+	tmp+=tmp2;
+	file.SeekToEnd();
+	file.Write(tmp,strlen(tmp));
 }
 
 void CAppDev::Read_History(){
-	
+	CFileFind finder;
+	if(!finder.FindFile(FILE_NAME)){
+		MessageBox("无历史记录");
+		return;
+	}
+	CString str,tmp;
+	CStdioFile file;
+	CFileException except;
+	file.Open(FILE_NAME,CFile::modeRead,&except);
+	while(file.ReadString(tmp)) str+=(tmp+"\r\n");
+	file.Close();
+	m_history_edit.SetWindowText(str);
+}
+
+void CAppDev::OnRemoveHistory() 
+{
+	// TODO: Add your control notification handler code here
+	CFile file;
+	file.Remove(FILE_NAME);
+	m_history_edit.SetWindowText("");
+}
+
+void CAppDev::OnInquireHistory() 
+{
+	// TODO: Add your control notification handler code here
+	Read_History();
 }

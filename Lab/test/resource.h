@@ -43,11 +43,8 @@
 #define IDC_CARD_WR_BLOCK3_EDIT2        1037
 #define IDC_CARD_WR_BLOCK3_EDIT3        1038
 #define IDC_HISTORY_EDIT                1039
-#define FILE_MODE_NAME "history_mode.txt"
-#define FILE_NUMBER_NAME "history_number.txt"
-#define INIT_WALLET_MODE 1
-#define RECHARGE_MODE 2
-#define PAY_MODE 3
+#define IDC_REMOVE_HISTORY              1040
+#define IDC_INQUIRE_HISTORY             1041
 
 // Next default values for new objects
 // 
@@ -55,7 +52,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1040
+#define _APS_NEXT_CONTROL_VALUE         1041
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

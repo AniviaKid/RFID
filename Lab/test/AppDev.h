@@ -1,5 +1,9 @@
 #if !defined(AFX_APPDEV_H__C5FE4948_5F83_4103_AC6A_1103439CA458__INCLUDED_)
 #define AFX_APPDEV_H__C5FE4948_5F83_4103_AC6A_1103439CA458__INCLUDED_
+#define FILE_NAME "history.txt"
+#define INIT_WALLET_MODE 1
+#define RECHARGE_MODE 2
+#define PAY_MODE 3
 
 #if _MSC_VER > 1000
 #pragma once
@@ -21,6 +25,7 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CAppDev)
 	enum { IDD = IDD_APPDEV };
+	CEdit	m_history_edit;
 	CEdit	m_state_edit;
 	CEdit	m_recharge_edit;
 	CEdit	m_pay_edit;
@@ -49,6 +54,8 @@ protected:
 	afx_msg void Transform_CString_to_UnsignedChar(CString str,unsigned char* ch);
 	afx_msg void Write_To_History(int mode,int number);
 	afx_msg void Read_History();
+	afx_msg void OnRemoveHistory();
+	afx_msg void OnInquireHistory();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

@@ -6,13 +6,13 @@
 --------------------Configuration: test - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSP11D9.tmp" with contents
+Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSPFE8C.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /Fp"Debug/test.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "D:\VC++6.0\Microsoft Visual Studio\MyProjects\Lab\test\AppDev.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ASUS\AppData\Local\Temp\RSP11D9.tmp" 
-Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSP11DA.tmp" with contents
+Creating command line "cl.exe @C:\Users\ASUS\AppData\Local\Temp\RSPFE8C.tmp" 
+Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSPFE8D.tmp" with contents
 [
 ZM124U.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/test.pdb" /debug /machine:I386 /out:"Debug/test.exe" /pdbtype:sept /libpath:"./libs" 
 ".\Debug\AppDev.obj"
@@ -22,7 +22,7 @@ ZM124U.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/test.pdb" /de
 ".\Debug\testDlg.obj"
 ".\Debug\test.res"
 ]
-Creating command line "link.exe @C:\Users\ASUS\AppData\Local\Temp\RSP11DA.tmp"
+Creating command line "link.exe @C:\Users\ASUS\AppData\Local\Temp\RSPFE8D.tmp"
 <h3>Output Window</h3>
 Compiling...
 AppDev.cpp
