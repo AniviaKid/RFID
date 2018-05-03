@@ -88,7 +88,71 @@ void CDebugger::OnStartIns()
 void CDebugger::OnReadBlock() 
 {
 	// TODO: Add your control notification handler code here
-	MessageBox("¶Á¿é");
+	//MessageBox("¶Á¿é");
+	CString password;//ÃÜÔ¿
+	unsigned char pw_type;//ÃÜÔ¿ÀàĞÍ
+	m_password_edit.GetWindowText(password);
+	if(password.IsEmpty()) MessageBox("ÇëÊäÈëÃÜÔ¿");
+	else {
+		//CStringÃÜÔ¿×ªÎªunsigned char
+		unsigned char psw[6];
+		password.MakeUpper();
+		Transform_CString_to_UnsignedChar(password,psw);
+		
+		//ÅĞ¶ÏÃÜÔ¿ÀàĞÍ
+		if(((CButton *)GetDlgItem(IDC_RADIO_A_PASSWORD))->GetCheck()==1) pw_type=0x0A;
+		else if(((CButton *)GetDlgItem(IDC_RADIO_B_PASSWORD))->GetCheck()==1) pw_type=0x0B;
+		else {
+			MessageBox("ÇëÑ¡ÔñÃÜÔ¿ÀàĞÍ");
+			return;
+		}
+		
+		//»ñµÃÑ¡ÖĞÉÈÇøºÅ¡¢¿éºÅ
+		int cur_page=m_card_wr_sector_combo.GetCurSel();
+		int cur_block=m_card_wr_block_combo.GetCurSel();
+		if(cur_page==-1) MessageBox("ÇëÑ¡ÔñÉÈÇø");
+		else if(cur_block==-1) MessageBox("ÇëÑ¡Ôñ¿é");
+		else {
+			//¶ÁÄÚÈİ
+			unsigned char des_data[50];int des_len;
+			int return_state=read_block(cur_page,cur_block,pw_type,psw,des_data,&des_len);
+			if(return_state!=0){
+				CString tmp;
+				tmp.Format("%d",return_state);
+				MessageBox("¶Á¿éÊ§°Ü,×´Ì¬ÂëÎª"+tmp);
+				return;
+			}
+
+			//Ğ´ÄÚÈİ
+			CString tmp;
+			if(cur_block==0||cur_block==1||cur_block==2){ //¿é0 ¿é1 ¿é2
+				for(int k=0;k<des_len;k++){
+					CString s1;
+					s1.Format("%02X",des_data[k]);
+					tmp+=s1;
+				}
+				if(cur_block==0) m_block0_edit.SetWindowText(tmp);
+				else if(cur_block==1) m_block1_edit.SetWindowText(tmp);
+				else if(cur_block==2) m_block2_edit.SetWindowText(tmp);
+			}
+			else if(cur_block==3){ //¿é3
+				for(int k=0;k<des_len;k++){
+					CString s1;
+					s1.Format("%02X",des_data[k]);
+					tmp+=s1;
+					if(k==5){
+						m_block3_edit1.SetWindowText(tmp);
+						tmp.Empty();
+					}
+					else if(k==9){
+						m_block3_edit2.SetWindowText(tmp);
+						tmp.Empty();
+					}
+				}
+				m_block3_edit3.SetWindowText(tmp);
+			}
+		}
+	}
 }
 
 void CDebugger::OnReadSector() 
@@ -106,8 +170,8 @@ void CDebugger::OnReadSector()
 		Transform_CString_to_UnsignedChar(password,psw);
 		
 		//ÅĞ¶ÏÃÜÔ¿ÀàĞÍ
-		if(((CButton *)GetDlgItem(IDC_RADIO_A_PASSWORD))->GetCheck()==1) pw_type='A';
-		else if(((CButton *)GetDlgItem(IDC_RADIO_B_PASSWORD))->GetCheck()==1) pw_type='A';
+		if(((CButton *)GetDlgItem(IDC_RADIO_A_PASSWORD))->GetCheck()==1) pw_type=0x0A;
+		else if(((CButton *)GetDlgItem(IDC_RADIO_B_PASSWORD))->GetCheck()==1) pw_type=0x0B;
 		else {
 			MessageBox("ÇëÑ¡ÔñÃÜÔ¿ÀàĞÍ");
 			return;
@@ -164,7 +228,8 @@ void CDebugger::OnReadSector()
 void CDebugger::OnWriteBlock() 
 {
 	// TODO: Add your control notification handler code here
-	MessageBox("Ğ´¿é");
+	//MessageBox("Ğ´¿é");
+	
 }
 
 void CDebugger::OnDefaultPassword() 
@@ -191,8 +256,13 @@ void CDebugger::Transform_CString_to_UnsignedChar(CString str,unsigned char* res
 		if(ch>0x40) buffer[i]=(unsigned char)ch-0x37;
 		else buffer[i]=(unsigned char)atoi(&ch);
 	}
-	int j;
-	for(j=0,i=0;j<str.GetLength()/2;){
+	int j=0;
+	int leng=str.GetLength();
+	if(leng%2==1) {
+		res[j++]='0';
+		leng++;
+	}
+	for(i=0;j<str.GetLength()/2;){
 		res[j]=(unsigned char)(buffer[i++]<<4);
 		res[j++] |= buffer[i++];
 	}

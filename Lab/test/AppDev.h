@@ -19,7 +19,12 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CAppDev)
 	enum { IDD = IDD_APPDEV };
-		// NOTE: the ClassWizard will add data members here
+	CEdit	m_state_edit;
+	CEdit	m_recharge_edit;
+	CEdit	m_pay_edit;
+	CComboBox	m_wallet_sector_combo;
+	CComboBox	m_wallet_block_combo;
+	CEdit	m_balance_edit;
 	//}}AFX_DATA
 
 
@@ -35,7 +40,10 @@ protected:
 
 	// Generated message map functions
 	//{{AFX_MSG(CAppDev)
-		// NOTE: the ClassWizard will add member functions here
+	afx_msg void OnInitWalletButton();
+	afx_msg void OnInquireBalanceButton();
+	afx_msg void OnRechargeButton();
+	afx_msg void OnPayButton();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

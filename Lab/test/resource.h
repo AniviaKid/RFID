@@ -27,16 +27,16 @@
 #define IDC_RADIO_B_PASSWORD            1019
 #define IDC_PASSWORD_EDIT               1020
 #define IDC_DEFAULT_PASSWORD            1021
-#define IDC_COMBO4                      1022
-#define IDC_COMBO5                      1023
-#define IDC_EDIT6                       1024
-#define IDC_BUTTON5                     1025
-#define IDC_BUTTON6                     1026
-#define IDC_EDIT7                       1027
-#define IDC_EDIT8                       1028
-#define IDC_EDIT9                       1029
-#define IDC_BUTTON7                     1030
-#define IDC_BUTTON8                     1031
+#define IDC_WALLET_SECTOR_COMBO         1022
+#define IDC_WALLET_BLOCK_COMBO          1023
+#define IDC_BALANCE_EDIT                1024
+#define IDC_INIT_WALLET_BUTTON          1025
+#define IDC_INQUIRE_BALANCE_BUTTON      1026
+#define IDC_RECHARGE_EDIT               1027
+#define IDC_PAY_EDIT                    1028
+#define IDC_STATE_EDIT                  1029
+#define IDC_RECHARGE_BUTTON             1030
+#define IDC_PAY_BUTTON                  1031
 #define IDC_CARD_WR_BLOCK3_EDIT2        1037
 #define IDC_CARD_WR_BLOCK3_EDIT3        1038
 
