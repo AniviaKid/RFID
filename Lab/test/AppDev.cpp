@@ -80,6 +80,7 @@ void CAppDev::OnInitWalletButton()
 				return;
 			}
 			init_account=_ttoi(str);
+			Write_To_History(INIT_WALLET_MODE,(int)init_account);
 			
 			int return_state=write_account(cur_page,cur_block,now_psw_type,psw,init_account);
 			if(return_state!=0){
@@ -89,6 +90,7 @@ void CAppDev::OnInitWalletButton()
 				return;
 			}
 			
+			//Write_To_History(1,(int)init_account);
 			m_state_edit.SetWindowText("初始化成功");
 		}
 	}
@@ -159,7 +161,7 @@ void CAppDev::OnRechargeButton()
 				return;
 			}
 			addAccount=_ttoi(add_str);
-			
+			Write_To_History(RECHARGE_MODE,(int)addAccount);
 			
 			int return_state=add_account(cur_page,cur_block,now_psw_type,psw,addAccount);
 			if(return_state!=0){
@@ -168,6 +170,7 @@ void CAppDev::OnRechargeButton()
 				m_state_edit.SetWindowText("充值失败,状态码为"+tmp);
 				return;
 			}
+			//Write_To_History(RECHARGE_MODE,(int)addAccount);
 			m_state_edit.SetWindowText("充值成功");
 		}
 	}
@@ -200,6 +203,7 @@ void CAppDev::OnPayButton()
 				return;
 			}
 			subAccount=_ttoi(sub_str);
+			Write_To_History(PAY_MODE,(int)subAccount);
 			
 			int return_state_read=read_account(cur_page,cur_block,now_psw_type,psw,&account);
 			if(return_state_read!=0){
@@ -217,6 +221,7 @@ void CAppDev::OnPayButton()
 					m_state_edit.SetWindowText("扣费失败,状态码为"+tmp);
 					return;
 				}
+				//Write_To_History(PAY_MODE,(int)subAccount);
 				m_state_edit.SetWindowText("扣费成功");
 			}
 		}
@@ -240,4 +245,22 @@ void CAppDev::Transform_CString_to_UnsignedChar(CString str,unsigned char* res){
 		res[j]=(unsigned char)(buffer[i++]<<4);
 		res[j++] |= buffer[i++];
 	}
+}
+
+void CAppDev::Write_To_History(int mode,int number){
+	CFile file_mode,file_num;
+	file_mode.Open(FILE_MODE_NAME,CFile::modeCreate|CFile::modeNoTruncate|CFile::modeReadWrite);
+	file_num.Open(FILE_NUMBER_NAME,CFile::modeCreate|CFile::modeNoTruncate|CFile::modeReadWrite);
+	CString tmp;
+	tmp.Format("%d\r\n",mode);
+	file_mode.SeekToEnd();
+	file_mode.Write(tmp,strlen(tmp));
+	tmp.Empty();
+	tmp.Format("%d\r\n",number);
+	file_num.SeekToEnd();
+	file_num.Write(tmp,strlen(tmp));
+}
+
+void CAppDev::Read_History(){
+	
 }

@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CDebugger
+LastClass=CAppDev
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
@@ -13,13 +13,13 @@ Class2=CTestDlg
 Class3=CAboutDlg
 
 ResourceCount=5
-Resource1=IDD_TEST_DIALOG
+Resource1=IDD_DEBUGGER
 Resource2=IDR_MAINFRAME
-Resource3=IDD_APPDEV
+Resource3=IDD_TEST_DIALOG
 Class4=CAppDev
 Resource4=IDD_ABOUTBOX
 Class5=CDebugger
-Resource5=IDD_DEBUGGER
+Resource5=IDD_APPDEV
 
 [CLS:CTestApp]
 Type=0
@@ -60,7 +60,7 @@ Control1=IDC_TAB1,SysTabControl32,1342177280
 [DLG:IDD_APPDEV]
 Type=1
 Class=CAppDev
-ControlCount=18
+ControlCount=19
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_STATIC,static,1342308352
 Control3=IDC_WALLET_SECTOR_COMBO,combobox,1344340226
@@ -79,6 +79,7 @@ Control15=IDC_STATE_EDIT,edit,1484849280
 Control16=IDC_RECHARGE_BUTTON,button,1342242816
 Control17=IDC_PAY_BUTTON,button,1342242816
 Control18=IDC_STATIC,button,1342177287
+Control19=IDC_HISTORY_EDIT,edit,1476460676
 
 [CLS:CAppDev]
 Type=0
@@ -86,7 +87,7 @@ HeaderFile=AppDev.h
 ImplementationFile=AppDev.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_PAY_BUTTON
+LastObject=IDC_BALANCE_EDIT
 VirtualFilter=dWC
 
 [DLG:IDD_DEBUGGER]
