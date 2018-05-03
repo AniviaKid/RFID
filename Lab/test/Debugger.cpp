@@ -270,7 +270,7 @@ void CDebugger::Transform_CString_to_UnsignedChar(CString str,unsigned char* res
 		res[j++]='0';
 		leng++;
 	}
-	for(i=0;j<str.GetLength()/2;){
+	for(i=0;j<leng/2;){
 		res[j]=(unsigned char)(buffer[i++]<<4);
 		res[j++] |= buffer[i++];
 	}

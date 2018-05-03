@@ -100,13 +100,83 @@ void CAppDev::OnInquireBalanceButton()
 void CAppDev::OnRechargeButton() 
 {
 	// TODO: Add your control notification handler code here
-	
+	if(now_password.IsEmpty()) MessageBox("请输入密钥");
+	else {
+		if(now_psw_type!=0x0A&&now_psw_type!=0x0B){
+			MessageBox("请选择密钥类型");
+			return;
+		}
+		
+		unsigned char psw[6];
+		now_password.MakeUpper();
+		Transform_CString_to_UnsignedChar(now_password,psw);
+		
+		int cur_page=m_wallet_sector_combo.GetCurSel();
+		int cur_block=m_wallet_block_combo.GetCurSel();
+		if(cur_page==-1) MessageBox("请选择扇区");
+		else if(cur_block==-1) MessageBox("请选择块");
+		else {
+			long addAccount;
+			CString add_str;
+			m_recharge_edit.GetWindowText(add_str);
+			if(add_str.IsEmpty()){
+				MessageBox("请输入充值金额");
+				return;
+			}
+			addAccount=_ttoi(add_str);
+			
+			
+			int return_state=add_account(cur_page,cur_block,now_psw_type,psw,addAccount);
+			if(return_state!=0){
+				CString tmp;
+				tmp.Format("%d",return_state);
+				m_state_edit.SetWindowText("充值失败,状态码为"+tmp);
+				return;
+			}
+			m_state_edit.SetWindowText("充值成功");
+		}
+	}
 }
 
 void CAppDev::OnPayButton() 
 {
 	// TODO: Add your control notification handler code here
-	
+	if(now_password.IsEmpty()) MessageBox("请输入密钥");
+	else {
+		if(now_psw_type!=0x0A&&now_psw_type!=0x0B){
+			MessageBox("请选择密钥类型");
+			return;
+		}
+		
+		unsigned char psw[6];
+		now_password.MakeUpper();
+		Transform_CString_to_UnsignedChar(now_password,psw);
+		
+		int cur_page=m_wallet_sector_combo.GetCurSel();
+		int cur_block=m_wallet_block_combo.GetCurSel();
+		if(cur_page==-1) MessageBox("请选择扇区");
+		else if(cur_block==-1) MessageBox("请选择块");
+		else {
+			long subAccount;
+			CString sub_str;
+			m_pay_edit.GetWindowText(sub_str);
+			if(sub_str.IsEmpty()){
+				MessageBox("请输入扣费金额");
+				return;
+			}
+			subAccount=_ttoi(sub_str);
+			
+			
+			int return_state=sub_account(cur_page,cur_block,now_psw_type,psw,subAccount);
+			if(return_state!=0){
+				CString tmp;
+				tmp.Format("%d",return_state);
+				m_state_edit.SetWindowText("扣费失败,状态码为"+tmp);
+				return;
+			}
+			m_state_edit.SetWindowText("扣费成功");
+		}
+	}
 }
 
 void CAppDev::Transform_CString_to_UnsignedChar(CString str,unsigned char* res){
@@ -122,7 +192,7 @@ void CAppDev::Transform_CString_to_UnsignedChar(CString str,unsigned char* res){
 		res[j++]='0';
 		leng++;
 	}
-	for(i=0;j<str.GetLength()/2;){
+	for(i=0;j<leng/2;){
 		res[j]=(unsigned char)(buffer[i++]<<4);
 		res[j++] |= buffer[i++];
 	}

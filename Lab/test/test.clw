@@ -13,11 +13,11 @@ Class2=CTestDlg
 Class3=CAboutDlg
 
 ResourceCount=5
-Resource1=IDD_ABOUTBOX
+Resource1=IDD_APPDEV
 Resource2=IDR_MAINFRAME
-Resource3=IDD_TEST_DIALOG
+Resource3=IDD_ABOUTBOX
 Class4=CAppDev
-Resource4=IDD_APPDEV
+Resource4=IDD_TEST_DIALOG
 Class5=CDebugger
 Resource5=IDD_DEBUGGER
 
