@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CAppDev
+LastClass=CDebugger
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
@@ -13,11 +13,11 @@ Class2=CTestDlg
 Class3=CAboutDlg
 
 ResourceCount=5
-Resource1=IDD_APPDEV
+Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Resource3=IDD_TEST_DIALOG
 Class4=CAppDev
-Resource4=IDD_ABOUTBOX
+Resource4=IDD_APPDEV
 Class5=CDebugger
 Resource5=IDD_DEBUGGER
 
@@ -131,6 +131,6 @@ HeaderFile=Debugger.h
 ImplementationFile=Debugger.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=CDebugger
+LastObject=IDC_RADIO_B_PASSWORD
 VirtualFilter=dWC
 

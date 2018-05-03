@@ -4,6 +4,8 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
+
+#include "Debugger.h"
 // AppDev.h : header file
 //
 
@@ -44,6 +46,7 @@ protected:
 	afx_msg void OnInquireBalanceButton();
 	afx_msg void OnRechargeButton();
 	afx_msg void OnPayButton();
+	afx_msg void Transform_CString_to_UnsignedChar(CString str,unsigned char* ch);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

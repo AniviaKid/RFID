@@ -14,6 +14,8 @@ static char THIS_FILE[] = __FILE__;
 
 /////////////////////////////////////////////////////////////////////////////
 // CDebugger dialog
+CString now_password;
+unsigned char now_psw_type;
 
 
 CDebugger::CDebugger(CWnd* pParent /*=NULL*/)
@@ -51,6 +53,9 @@ BEGIN_MESSAGE_MAP(CDebugger, CDialog)
 	ON_BN_CLICKED(IDC_READ_SECTOR, OnReadSector)
 	ON_BN_CLICKED(IDC_WRITE_BLOCK, OnWriteBlock)
 	ON_BN_CLICKED(IDC_DEFAULT_PASSWORD, OnDefaultPassword)
+	ON_EN_CHANGE(IDC_PASSWORD_EDIT, OnChangePasswordEdit)
+	ON_BN_CLICKED(IDC_RADIO_A_PASSWORD, OnRadioAPassword)
+	ON_BN_CLICKED(IDC_RADIO_B_PASSWORD, OnRadioBPassword)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -235,7 +240,10 @@ void CDebugger::OnWriteBlock()
 void CDebugger::OnDefaultPassword() 
 {
 	// TODO: Add your control notification handler code here
+	((CButton *)GetDlgItem(IDC_RADIO_B_PASSWORD))->SetCheck(TRUE);
 	m_password_edit.SetWindowText("FFFFFFFFFFFF");
+	now_password="FFFFFFFFFFFF";
+	now_psw_type=0x0B;
 	//((CButton *)GetDlgItem(IDC_RADIO_A_PASSWORD))->GetCheck()
 }
 
@@ -266,4 +274,27 @@ void CDebugger::Transform_CString_to_UnsignedChar(CString str,unsigned char* res
 		res[j]=(unsigned char)(buffer[i++]<<4);
 		res[j++] |= buffer[i++];
 	}
+}
+
+void CDebugger::OnChangePasswordEdit() 
+{
+	// TODO: If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialog::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+	
+	// TODO: Add your control notification handler code here
+	m_password_edit.GetWindowText(now_password);
+}
+
+void CDebugger::OnRadioAPassword() 
+{
+	// TODO: Add your control notification handler code here
+	now_psw_type=0x0A;
+}
+
+void CDebugger::OnRadioBPassword() 
+{
+	// TODO: Add your control notification handler code here
+	now_psw_type=0x0B;
 }

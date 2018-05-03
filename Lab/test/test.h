@@ -19,6 +19,7 @@
 // See test.cpp for the implementation of this class
 //
 
+
 class CTestApp : public CWinApp
 {
 public:
