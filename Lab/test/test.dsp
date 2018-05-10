@@ -164,11 +164,27 @@ SOURCE=.\testDlg.h
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # Begin Source File
 
+SOURCE=.\res\bitmap1.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Riven.bmp
+# End Source File
+# Begin Source File
+
 SOURCE=.\res\test.ico
 # End Source File
 # Begin Source File
 
 SOURCE=.\res\test.rc2
+# End Source File
+# Begin Source File
+
+SOURCE=.\timg.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Yasuo.bmp
 # End Source File
 # End Group
 # Begin Source File

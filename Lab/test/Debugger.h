@@ -56,6 +56,7 @@ protected:
 	afx_msg void OnRadioAPassword();
 	afx_msg void OnRadioBPassword();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void OnPaint();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 	

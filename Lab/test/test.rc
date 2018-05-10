@@ -124,7 +124,7 @@ BEGIN
     PUSHBUTTON      "²éÑ¯¼ÇÂ¼",IDC_INQUIRE_HISTORY,425,187,39,15
 END
 
-IDD_DEBUGGER DIALOG DISCARDABLE  0, 0, 506, 231
+IDD_DEBUGGER DIALOGEX 0, 0, 506, 231
 STYLE WS_CHILD
 FONT 10, "System"
 BEGIN
@@ -137,7 +137,7 @@ BEGIN
     EDITTEXT        IDC_EDIT_NUMBER,55,58,56,12,ES_AUTOHSCROLL | WS_DISABLED
     PUSHBUTTON      "Ñ°¿¨",IDC_FIND_CARD,171,58,50,14
     GROUPBOX        "¿¨Æ¬¶ÁÐ´²Ù×÷",IDC_STATIC,246,21,240,176
-    LTEXT           "ÉÈÇø:",IDC_STATIC,255,37,27,11
+    LTEXT           "ÉÈÇø:",IDC_STATIC,255,37,27,11,0,WS_EX_TRANSPARENT
     COMBOBOX        IDC_CARD_WR_SECTOR_COMBO,285,35,48,61,CBS_DROPDOWNLIST | 
                     WS_VSCROLL | WS_TABSTOP
     LTEXT           "¿é0ÐÅÏ¢:",IDC_STATIC,256,60,31,8
@@ -362,6 +362,14 @@ BEGIN
     0
 END
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP_RIVEN        BITMAP  DISCARDABLE     "Riven.bmp"
+IDB_BITMAP_YASUO        BITMAP  DISCARDABLE     "Yasuo.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
