@@ -18,6 +18,7 @@ static char THIS_FILE[] = __FILE__;
 CString now_password;
 unsigned char now_psw_type;
 
+BOOL isDeviceOpen;
 
 CDebugger::CDebugger(CWnd* pParent /*=NULL*/)
 	: CDialog(CDebugger::IDD, pParent)
@@ -88,8 +89,14 @@ void CDebugger::OnStartIns()
 {
 	// TODO: Add your control notification handler code here
 	int state=IDD_PowerOn();
-	if(state==0) m_ins_state.SetWindowText("开场成功");
-	else m_ins_state.SetWindowText("开场失败");
+	if(state==0){
+		isDeviceOpen=TRUE;
+		m_ins_state.SetWindowText("开场成功");
+	}
+	else{
+		isDeviceOpen=FALSE;
+		m_ins_state.SetWindowText("开场失败");
+	}
 }
 
 void CDebugger::OnReadBlock() 
@@ -236,20 +243,59 @@ void CDebugger::OnWriteBlock()
 {
 	// TODO: Add your control notification handler code here
 	//MessageBox("写块");
-	CAdoMySQLHelper sql;
-	sql.ConnectDB();
-	BOOL res=sql.ExecuteQuery("select * from test;");
-	if(res==TRUE) {
-		MYSQL_ROW pSQLRow=NULL;
-		CString select_res;
-		while(pSQLRow=mysql_fetch_row(sql.Get_m_pSQLResultSet())){
-			for(int i=0;i<2;i++){
-				select_res+=pSQLRow[i];
-				select_res+=" ";
-			}
-			select_res+="\n";
+	CString password;//密钥
+	unsigned char pw_type;//密钥类型
+	m_password_edit.GetWindowText(password);
+	if(password.IsEmpty()) MessageBox("请输入密钥");
+	else {
+		unsigned char psw[6];
+		password.MakeUpper();
+		Transform_CString_to_UnsignedChar(password,psw);
+		
+		if(((CButton *)GetDlgItem(IDC_RADIO_A_PASSWORD))->GetCheck()==1) pw_type=0x0A;
+		else if(((CButton *)GetDlgItem(IDC_RADIO_B_PASSWORD))->GetCheck()==1) pw_type=0x0B;
+		else {
+			MessageBox("请选择密钥类型");
+			return;
 		}
-		AfxMessageBox(select_res);
+		
+		int cur_page=m_card_wr_sector_combo.GetCurSel();
+		int cur_block=m_card_wr_block_combo.GetCurSel();
+		if(cur_page==-1) MessageBox("请选择扇区");
+		else if(cur_block==-1) MessageBox("请选择块");
+		else{
+			if(cur_block==0||cur_block==1||cur_block==2){
+				CString content;
+				switch(cur_block){
+					case 0:
+						m_block0_edit.GetWindowText(content);
+						break;
+					case 1:
+						m_block1_edit.GetWindowText(content);
+						break;
+					case 2:
+						m_block2_edit.GetWindowText(content);
+						break;
+				}
+				if(content.IsEmpty()){
+					MessageBox("请输入写入值");
+					return;
+				}
+				unsigned char src_data[16];
+				Transform_CString_to_UnsignedChar(content,src_data);
+				int return_state=write_block(cur_block,cur_page,pw_type,psw,src_data,content.GetLength());
+				if(return_state!=0){
+					CString tmp;
+					tmp.Format("%d",return_state);
+					MessageBox("写块失败,状态码为"+tmp);
+					return;
+				}
+				MessageBox("写块成功");
+			}
+			else if(cur_block==3){
+				
+			}
+		}
 	}
 }
 
@@ -315,3 +361,25 @@ void CDebugger::OnRadioBPassword()
 	now_psw_type=0x0B;
 }
 
+
+HBRUSH CDebugger::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) 
+{
+	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	
+	// TODO: Change any attributes of the DC here
+	
+	// TODO: Return a different brush if the default is not desired
+	switch(pWnd->GetDlgCtrlID()){
+		case IDC_EDIT_STATE:
+			if(isDeviceOpen) pDC->SetTextColor(RGB(0,0,255));
+			else pDC->SetTextColor(RGB(255,0,0));
+			break;
+		case IDC_PASSWORD_EDIT:
+			pDC->SetTextColor(RGB(0,0,255));
+			break;
+		default:
+			pDC->SetTextColor(RGB(51,51,51));
+			break;
+	}
+	return hbr;
+}

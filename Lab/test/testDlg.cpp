@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "test.h"
 #include "testDlg.h"
+#include "Login.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -137,6 +138,9 @@ BOOL CTestDlg::OnInitDialog()
 	m_MainDebugger.ShowWindow(SW_SHOWNORMAL);
 	m_MainAppDev.ShowWindow(SW_HIDE);
 	m_MainMenu.SetCurSel(0);
+	/*m_MainMenu.ShowWindow(SW_HIDE);
+	CLogin login;
+	login.DoModal();*/
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 

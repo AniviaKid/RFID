@@ -103,6 +103,10 @@ SOURCE=.\Debugger.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\Login.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\StdAfx.cpp
 # ADD CPP /Yc"stdafx.h"
 # End Source File
@@ -133,6 +137,10 @@ SOURCE=.\AppDev.h
 # Begin Source File
 
 SOURCE=.\Debugger.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Login.h
 # End Source File
 # Begin Source File
 

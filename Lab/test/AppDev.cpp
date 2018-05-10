@@ -19,6 +19,9 @@ extern CString now_password;
 extern unsigned char now_psw_type;
 
 
+BOOL isExcuted;
+
+
 CAppDev::CAppDev(CWnd* pParent /*=NULL*/)
 	: CDialog(CAppDev::IDD, pParent)
 {
@@ -50,6 +53,7 @@ BEGIN_MESSAGE_MAP(CAppDev, CDialog)
 	ON_BN_CLICKED(IDC_PAY_BUTTON, OnPayButton)
 	ON_BN_CLICKED(IDC_REMOVE_HISTORY, OnRemoveHistory)
 	ON_BN_CLICKED(IDC_INQUIRE_HISTORY, OnInquireHistory)
+	ON_WM_CTLCOLOR()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -89,11 +93,13 @@ void CAppDev::OnInitWalletButton()
 			if(return_state!=0){
 				CString tmp;
 				tmp.Format("%d",return_state);
+				isExcuted=FALSE;
 				m_state_edit.SetWindowText("³õÊ¼»¯Ê§°Ü,×´Ì¬ÂëÎª"+tmp);
 				return;
 			}
 			
 			Write_To_History(1,(int)init_account);
+			isExcuted=TRUE;
 			m_state_edit.SetWindowText("³õÊ¼»¯³É¹¦");
 		}
 	}
@@ -125,6 +131,7 @@ void CAppDev::OnInquireBalanceButton()
 				CString tmp;
 				tmp.Format("%d",return_state);
 				//MessageBox("²éÑ¯Ê§°Ü,×´Ì¬ÂëÎª"+tmp);
+				isExcuted=FALSE;
 				m_state_edit.SetWindowText("²éÑ¯Ê§°Ü,×´Ì¬ÂëÎª"+tmp);
 				return;
 			}
@@ -132,6 +139,7 @@ void CAppDev::OnInquireBalanceButton()
 			CString tmp;
 			tmp.Format("%d",account);
 			m_balance_edit.SetWindowText(tmp);
+			isExcuted=TRUE;
 			m_state_edit.SetWindowText("²éÑ¯³É¹¦");
 		}
 	}
@@ -170,10 +178,12 @@ void CAppDev::OnRechargeButton()
 			if(return_state!=0){
 				CString tmp;
 				tmp.Format("%d",return_state);
+				isExcuted=FALSE;
 				m_state_edit.SetWindowText("³äÖµÊ§°Ü,×´Ì¬ÂëÎª"+tmp);
 				return;
 			}
 			Write_To_History(RECHARGE_MODE,(int)addAccount);
+			isExcuted=TRUE;
 			m_state_edit.SetWindowText("³äÖµ³É¹¦");
 		}
 	}
@@ -212,6 +222,7 @@ void CAppDev::OnPayButton()
 			if(return_state_read!=0){
 				CString tmp;
 				tmp.Format("%d",return_state_read);
+				isExcuted=FALSE;
 				m_state_edit.SetWindowText("¶ÁÈ¡Óà¶îÊ§°Ü,×´Ì¬ÂëÎª"+tmp);
 				return;
 			}
@@ -221,10 +232,12 @@ void CAppDev::OnPayButton()
 				if(return_state_sub!=0){
 					CString tmp;
 					tmp.Format("%d",return_state_sub);
+					isExcuted=FALSE;
 					m_state_edit.SetWindowText("¿Û·ÑÊ§°Ü,×´Ì¬ÂëÎª"+tmp);
 					return;
 				}
 				Write_To_History(PAY_MODE,(int)subAccount);
+				isExcuted=FALSE;
 				m_state_edit.SetWindowText("¿Û·Ñ³É¹¦");
 			}
 		}
@@ -290,4 +303,23 @@ void CAppDev::OnInquireHistory()
 {
 	// TODO: Add your control notification handler code here
 	Read_History();
+}
+
+HBRUSH CAppDev::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) 
+{
+	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+	
+	// TODO: Change any attributes of the DC here
+	
+	// TODO: Return a different brush if the default is not desired
+	switch(pWnd->GetDlgCtrlID()){
+		case IDC_STATE_EDIT:
+			if(isExcuted) pDC->SetTextColor(RGB(0,0,255));
+			else pDC->SetTextColor(RGB(255,0,0));
+			break;
+		default:
+			pDC->SetTextColor(RGB(0,0,0));
+			break;
+	}
+	return hbr;
 }

@@ -52,13 +52,16 @@ protected:
 	afx_msg void OnReadSector();
 	afx_msg void OnWriteBlock();
 	afx_msg void OnDefaultPassword();
-	afx_msg void Clear_WR_View();
-	afx_msg void Transform_CString_to_UnsignedChar(CString str,unsigned char* ch);
 	afx_msg void OnChangePasswordEdit();
 	afx_msg void OnRadioAPassword();
 	afx_msg void OnRadioBPassword();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+	
+private:
+	afx_msg void Clear_WR_View();
+	afx_msg void Transform_CString_to_UnsignedChar(CString str,unsigned char* ch);
 };
 
 //{{AFX_INSERT_LOCATION}}

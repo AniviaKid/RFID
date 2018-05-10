@@ -12,6 +12,7 @@
 #define IDR_MAINFRAME                   128
 #define IDD_APPDEV                      129
 #define IDD_DEBUGGER                    130
+#define IDD_LOGIN                       132
 #define IDC_TAB1                        1000
 #define IDC_EDIT_STATE                  1002
 #define IDC_EDIT_NUMBER                 1003
@@ -45,14 +46,16 @@
 #define IDC_HISTORY_EDIT                1039
 #define IDC_REMOVE_HISTORY              1040
 #define IDC_INQUIRE_HISTORY             1041
+#define IDC_USERNAME_EDIT               1041
+#define IDC_LOGIN_BUTTON                1042
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        132
+#define _APS_NEXT_RESOURCE_VALUE        133
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1041
+#define _APS_NEXT_CONTROL_VALUE         1043
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

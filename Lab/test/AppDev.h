@@ -51,13 +51,16 @@ protected:
 	afx_msg void OnInquireBalanceButton();
 	afx_msg void OnRechargeButton();
 	afx_msg void OnPayButton();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	//}}AFX_MSG
+	DECLARE_MESSAGE_MAP()
+	
+private:
 	afx_msg void Transform_CString_to_UnsignedChar(CString str,unsigned char* ch);
 	afx_msg void Write_To_History(int mode,int number);
 	afx_msg void Read_History();
 	afx_msg void OnRemoveHistory();
 	afx_msg void OnInquireHistory();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

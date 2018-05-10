@@ -2,24 +2,26 @@
 
 [General Info]
 Version=1
-LastClass=CDebugger
+LastClass=CAppDev
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
 
-ClassCount=5
+ClassCount=6
 Class1=CTestApp
 Class2=CTestDlg
 Class3=CAboutDlg
 
-ResourceCount=5
-Resource1=IDD_APPDEV
+ResourceCount=6
+Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
-Resource3=IDD_ABOUTBOX
+Resource3=IDD_DEBUGGER
 Class4=CAppDev
-Resource4=IDD_TEST_DIALOG
+Resource4=IDD_APPDEV
 Class5=CDebugger
-Resource5=IDD_DEBUGGER
+Resource5=IDD_TEST_DIALOG
+Class6=CLogin
+Resource6=IDD_LOGIN
 
 [CLS:CTestApp]
 Type=0
@@ -75,7 +77,7 @@ Control11=IDC_RECHARGE_EDIT,edit,1350631552
 Control12=IDC_STATIC,static,1342308352
 Control13=IDC_PAY_EDIT,edit,1350631552
 Control14=IDC_STATIC,static,1342308352
-Control15=IDC_STATE_EDIT,edit,1484849280
+Control15=IDC_STATE_EDIT,edit,1350631552
 Control16=IDC_RECHARGE_BUTTON,button,1342242816
 Control17=IDC_PAY_BUTTON,button,1342242816
 Control18=IDC_STATIC,button,1342177287
@@ -98,7 +100,7 @@ Class=CDebugger
 ControlCount=31
 Control1=ID_START_INS,button,1342242817
 Control2=IDC_STATIC,static,1342308352
-Control3=IDC_EDIT_STATE,edit,1484849280
+Control3=IDC_EDIT_STATE,edit,1350566016
 Control4=IDC_STATIC,button,1342177287
 Control5=IDC_STATIC,static,1342308352
 Control6=IDC_EDIT_NUMBER,edit,1484849280
@@ -125,8 +127,8 @@ Control26=IDC_STATIC,static,1342308352
 Control27=IDC_PASSWORD_EDIT,edit,1350631552
 Control28=IDC_DEFAULT_PASSWORD,button,1342242816
 Control29=IDC_CARD_WR_BLOCK3_EDIT1,edit,1350631552
-Control30=IDC_CARD_WR_BLOCK3_EDIT2,edit,1350631552
-Control31=IDC_CARD_WR_BLOCK3_EDIT3,edit,1350631552
+Control30=IDC_CARD_WR_BLOCK3_EDIT2,edit,1484849280
+Control31=IDC_CARD_WR_BLOCK3_EDIT3,edit,1484849280
 
 [CLS:CDebugger]
 Type=0
@@ -135,5 +137,24 @@ ImplementationFile=Debugger.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=CDebugger
+VirtualFilter=dWC
+
+[DLG:IDD_LOGIN]
+Type=1
+Class=CLogin
+ControlCount=5
+Control1=IDC_STATIC,static,1342308352
+Control2=IDC_STATIC,static,1342308352
+Control3=IDC_USERNAME_EDIT,edit,1350631552
+Control4=IDC_PASSWORD_EDIT,edit,1350631584
+Control5=IDC_LOGIN_BUTTON,button,1342242816
+
+[CLS:CLogin]
+Type=0
+HeaderFile=Login.h
+ImplementationFile=Login.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=IDC_LOGIN_BUTTON
 VirtualFilter=dWC
 
