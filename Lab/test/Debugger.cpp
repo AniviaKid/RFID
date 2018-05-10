@@ -5,6 +5,7 @@
 #include "test.h"
 #include "Debugger.h"
 #include "ZM124U.h"
+#include "AdoMySQLHelper.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -56,6 +57,7 @@ BEGIN_MESSAGE_MAP(CDebugger, CDialog)
 	ON_EN_CHANGE(IDC_PASSWORD_EDIT, OnChangePasswordEdit)
 	ON_BN_CLICKED(IDC_RADIO_A_PASSWORD, OnRadioAPassword)
 	ON_BN_CLICKED(IDC_RADIO_B_PASSWORD, OnRadioBPassword)
+	ON_WM_CTLCOLOR()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -234,7 +236,21 @@ void CDebugger::OnWriteBlock()
 {
 	// TODO: Add your control notification handler code here
 	//MessageBox("Ð´¿é");
-	
+	CAdoMySQLHelper sql;
+	sql.ConnectDB();
+	BOOL res=sql.ExecuteQuery("select * from test;");
+	if(res==TRUE) {
+		MYSQL_ROW pSQLRow=NULL;
+		CString select_res;
+		while(pSQLRow=mysql_fetch_row(sql.Get_m_pSQLResultSet())){
+			for(int i=0;i<2;i++){
+				select_res+=pSQLRow[i];
+				select_res+=" ";
+			}
+			select_res+="\n";
+		}
+		AfxMessageBox(select_res);
+	}
 }
 
 void CDebugger::OnDefaultPassword() 
@@ -276,7 +292,7 @@ void CDebugger::Transform_CString_to_UnsignedChar(CString str,unsigned char* res
 	}
 }
 
-void CDebugger::OnChangePasswordEdit() 
+void CDebugger::OnChangePasswordEdit()  
 {
 	// TODO: If this is a RICHEDIT control, the control will not
 	// send this notification unless you override the CDialog::OnInitDialog()
@@ -298,3 +314,4 @@ void CDebugger::OnRadioBPassword()
 	// TODO: Add your control notification handler code here
 	now_psw_type=0x0B;
 }
+

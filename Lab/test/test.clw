@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CAppDev
+LastClass=CDebugger
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
@@ -13,11 +13,11 @@ Class2=CTestDlg
 Class3=CAboutDlg
 
 ResourceCount=5
-Resource1=IDD_TEST_DIALOG
+Resource1=IDD_APPDEV
 Resource2=IDR_MAINFRAME
-Resource3=IDD_APPDEV
+Resource3=IDD_ABOUTBOX
 Class4=CAppDev
-Resource4=IDD_ABOUTBOX
+Resource4=IDD_TEST_DIALOG
 Class5=CDebugger
 Resource5=IDD_DEBUGGER
 
@@ -34,7 +34,7 @@ ImplementationFile=testDlg.cpp
 Filter=D
 BaseClass=CDialog
 VirtualFilter=dWC
-LastObject=IDC_TAB1
+LastObject=CTestDlg
 
 [CLS:CAboutDlg]
 Type=0
@@ -89,7 +89,7 @@ HeaderFile=AppDev.h
 ImplementationFile=AppDev.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_INQUIRE_HISTORY
+LastObject=CAppDev
 VirtualFilter=dWC
 
 [DLG:IDD_DEBUGGER]
@@ -134,6 +134,6 @@ HeaderFile=Debugger.h
 ImplementationFile=Debugger.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_RADIO_B_PASSWORD
+LastObject=CDebugger
 VirtualFilter=dWC
 
