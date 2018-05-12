@@ -29,6 +29,7 @@ public:
 	BOOL ConnectDB();
 	BOOL ExecuteQuery(const char* strSQL);
 	MYSQL_RES* Get_m_pSQLResultSet();
+	MYSQL* Get_m_pSQL();
 	//my_ulonglong mysql_affected_rows(MYSQL *mysql); //return affected rows
 };
 

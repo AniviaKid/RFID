@@ -2,26 +2,28 @@
 
 [General Info]
 Version=1
-LastClass=CAppDev
+LastClass=CREGISTER
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
 
-ClassCount=6
+ClassCount=7
 Class1=CTestApp
 Class2=CTestDlg
 Class3=CAboutDlg
 
-ResourceCount=6
-Resource1=IDD_TEST_DIALOG
+ResourceCount=7
+Resource1=IDD_LOGIN
 Resource2=IDR_MAINFRAME
-Resource3=IDD_ABOUTBOX
+Resource3=IDD_TEST_DIALOG
 Class4=CAppDev
-Resource4=IDD_APPDEV
+Resource4=IDD_DEBUGGER
 Class5=CDebugger
-Resource5=IDD_DEBUGGER
+Resource5=IDD_APPDEV
 Class6=CLogin
-Resource6=IDD_LOGIN
+Resource6=IDD_ABOUTBOX
+Class7=CREGISTER
+Resource7=IDD_REGISTER
 
 [CLS:CTestApp]
 Type=0
@@ -142,12 +144,13 @@ VirtualFilter=dWC
 [DLG:IDD_LOGIN]
 Type=1
 Class=CLogin
-ControlCount=5
+ControlCount=6
 Control1=IDC_STATIC,static,1342308352
 Control2=IDC_STATIC,static,1342308352
 Control3=IDC_USERNAME_EDIT,edit,1350631552
 Control4=IDC_PASSWORD_EDIT,edit,1350631584
 Control5=IDC_LOGIN_BUTTON,button,1342242816
+Control6=IDC_REGISTERED_BUTTON,button,1342242816
 
 [CLS:CLogin]
 Type=0
@@ -155,6 +158,28 @@ HeaderFile=Login.h
 ImplementationFile=Login.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_LOGIN_BUTTON
+LastObject=CLogin
+VirtualFilter=dWC
+
+[DLG:IDD_REGISTER]
+Type=1
+Class=CREGISTER
+ControlCount=8
+Control1=IDC_STATIC,static,1342308352
+Control2=IDC_STATIC,static,1342308352
+Control3=IDC_STATIC,static,1342308352
+Control4=IDC_USERNAME_EDIT,edit,1350631552
+Control5=IDC_PASSWORD_EDIT,edit,1350631584
+Control6=IDC_CONFIRM_EDIT,edit,1350631584
+Control7=IDC_REGISTER,button,1342242816
+Control8=IDC_BACK,button,1342242816
+
+[CLS:CREGISTER]
+Type=0
+HeaderFile=REGISTER.h
+ImplementationFile=REGISTER.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=IDC_BACK
 VirtualFilter=dWC
 

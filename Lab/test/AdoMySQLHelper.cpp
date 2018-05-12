@@ -61,3 +61,5 @@ BOOL CAdoMySQLHelper::ExecuteQuery(const char* strSQL){
 
 MYSQL_RES* CAdoMySQLHelper::Get_m_pSQLResultSet() {return m_pSQLResultSet;}
 
+MYSQL* CAdoMySQLHelper::Get_m_pSQL() {return m_pSQL;}
+

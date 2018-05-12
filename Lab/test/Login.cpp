@@ -6,6 +6,7 @@
 #include "Login.h"
 #include "testDlg.h"
 #include "AdoMySQLHelper.h"
+#include "REGISTER.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -39,6 +40,7 @@ void CLogin::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CLogin, CDialog)
 	//{{AFX_MSG_MAP(CLogin)
 	ON_BN_CLICKED(IDC_LOGIN_BUTTON, OnLoginButton)
+	ON_BN_CLICKED(IDC_REGISTERED_BUTTON, OnRegisteredButton)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -91,4 +93,11 @@ void CLogin::OnLoginButton()
 		AfxMessageBox(select_res);
 	}
 	*/
+}
+
+void CLogin::OnRegisteredButton() 
+{
+	// TODO: Add your control notification handler code here
+	CREGISTER registerd;
+	registerd.DoModal();
 }

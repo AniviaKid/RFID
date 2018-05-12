@@ -37,6 +37,7 @@ protected:
 	// Generated message map functions
 	//{{AFX_MSG(CLogin)
 	afx_msg void OnLoginButton();
+	afx_msg void OnRegisteredButton();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
