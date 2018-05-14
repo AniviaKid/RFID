@@ -51,6 +51,9 @@ protected:
 private:
 	CDebugger m_MainDebugger;
 	CAppDev m_MainAppDev;
+	
+public:
+	CString username_tmp;
 };
 
 //{{AFX_INSERT_LOCATION}}

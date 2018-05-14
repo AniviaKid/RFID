@@ -15,6 +15,8 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CAboutDlg dialog used for App About
 
+CString now_username;
+
 class CAboutDlg : public CDialog
 {
 public:
@@ -141,6 +143,8 @@ BOOL CTestDlg::OnInitDialog()
 	m_MainMenu.ShowWindow(SW_HIDE);
 	CLogin login;
 	login.DoModal();
+	now_username=username_tmp;
+	m_MainDebugger.m_username_edit.SetWindowText(now_username);
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 

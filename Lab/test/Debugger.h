@@ -20,6 +20,7 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CDebugger)
 	enum { IDD = IDD_DEBUGGER };
+	CEdit	m_username_edit;
 	CEdit	m_password_edit;
 	CComboBox	m_card_wr_block_combo;
 	CComboBox	m_card_wr_sector_combo;

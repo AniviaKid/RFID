@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CREGISTER
+LastClass=CAppDev
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
@@ -13,15 +13,15 @@ Class2=CTestDlg
 Class3=CAboutDlg
 
 ResourceCount=7
-Resource1=IDD_LOGIN
+Resource1=IDD_TEST_DIALOG
 Resource2=IDR_MAINFRAME
-Resource3=IDD_TEST_DIALOG
+Resource3=IDD_ABOUTBOX
 Class4=CAppDev
-Resource4=IDD_DEBUGGER
+Resource4=IDD_LOGIN
 Class5=CDebugger
 Resource5=IDD_APPDEV
 Class6=CLogin
-Resource6=IDD_ABOUTBOX
+Resource6=IDD_DEBUGGER
 Class7=CREGISTER
 Resource7=IDD_REGISTER
 
@@ -64,7 +64,7 @@ Control1=IDC_TAB1,SysTabControl32,1342177280
 [DLG:IDD_APPDEV]
 Type=1
 Class=CAppDev
-ControlCount=21
+ControlCount=22
 Control1=IDC_STATIC,button,1342177287
 Control2=IDC_STATIC,static,1342308352
 Control3=IDC_WALLET_SECTOR_COMBO,combobox,1344340226
@@ -86,6 +86,7 @@ Control18=IDC_STATIC,button,1342177287
 Control19=IDC_HISTORY_EDIT,edit,1476464772
 Control20=IDC_REMOVE_HISTORY,button,1342242816
 Control21=IDC_INQUIRE_HISTORY,button,1342242816
+Control22=IDC_INQUIRE_ALL_HISTORY,button,1342242816
 
 [CLS:CAppDev]
 Type=0
@@ -93,13 +94,13 @@ HeaderFile=AppDev.h
 ImplementationFile=AppDev.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=CAppDev
+LastObject=IDC_INQUIRE_ALL_HISTORY
 VirtualFilter=dWC
 
 [DLG:IDD_DEBUGGER]
 Type=1
 Class=CDebugger
-ControlCount=31
+ControlCount=33
 Control1=ID_START_INS,button,1342242817
 Control2=IDC_STATIC,static,1342308352
 Control3=IDC_EDIT_STATE,edit,1350566016
@@ -131,6 +132,8 @@ Control28=IDC_DEFAULT_PASSWORD,button,1342242816
 Control29=IDC_CARD_WR_BLOCK3_EDIT1,edit,1350631552
 Control30=IDC_CARD_WR_BLOCK3_EDIT2,edit,1484849280
 Control31=IDC_CARD_WR_BLOCK3_EDIT3,edit,1484849280
+Control32=IDC_STATIC,static,1342308352
+Control33=IDC_USERNAME_EDIT,edit,1484849280
 
 [CLS:CDebugger]
 Type=0
@@ -138,7 +141,7 @@ HeaderFile=Debugger.h
 ImplementationFile=Debugger.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=CDebugger
+LastObject=IDC_USERNAME_EDIT
 VirtualFilter=dWC
 
 [DLG:IDD_LOGIN]

@@ -18,6 +18,7 @@ static char THIS_FILE[] = __FILE__;
 // CLogin dialog
 
 
+
 CLogin::CLogin(CWnd* pParent /*=NULL*/)
 	: CDialog(CLogin::IDD, pParent)
 {
@@ -69,9 +70,13 @@ void CLogin::OnLoginButton()
 				MessageBox("µÇÂ¼³É¹¦");
 				CTestDlg* parent=(CTestDlg*)GetParent();
 				parent->m_MainMenu.ShowWindow(SW_SHOWNORMAL);
+				parent->username_tmp=username;
 				CDialog::OnCancel();
 			}
-			else MessageBox("µÇÂ¼Ê§°Ü");
+			else{
+				MessageBox("µÇÂ¼Ê§°Ü");
+				m_password_edit.SetWindowText("");
+			}
 		}
 	}
 	

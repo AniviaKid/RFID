@@ -17,6 +17,7 @@ static char THIS_FILE[] = __FILE__;
 // CDebugger dialog
 CString now_password;
 unsigned char now_psw_type;
+extern CString now_username;
 
 BOOL isDeviceOpen;
 
@@ -32,6 +33,7 @@ void CDebugger::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CDebugger)
+	DDX_Control(pDX, IDC_USERNAME_EDIT, m_username_edit);
 	DDX_Control(pDX, IDC_PASSWORD_EDIT, m_password_edit);
 	DDX_Control(pDX, IDC_CARD_WR_BLOCK_COMBO, m_card_wr_block_combo);
 	DDX_Control(pDX, IDC_CARD_WR_SECTOR_COMBO, m_card_wr_sector_combo);
@@ -44,6 +46,8 @@ void CDebugger::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT_STATE, m_ins_state);
 	DDX_Control(pDX, IDC_EDIT_NUMBER, m_serial_number);
 	//}}AFX_DATA_MAP
+	
+	
 }
 
 

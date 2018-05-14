@@ -51,6 +51,7 @@
 #define IDC_INQUIRE_HISTORY             1041
 #define IDC_USERNAME_EDIT               1041
 #define IDC_LOGIN_BUTTON                1042
+#define IDC_INQUIRE_ALL_HISTORY         1042
 #define IDC_REGISTERED_BUTTON           1043
 #define IDC_CONFIRM_EDIT                1046
 #define IDC_REGISTER                    1047
@@ -62,7 +63,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1048
+#define _APS_NEXT_CONTROL_VALUE         1050
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

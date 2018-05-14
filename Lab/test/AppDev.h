@@ -53,6 +53,7 @@ protected:
 	afx_msg void OnPayButton();
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 	afx_msg void OnPaint();
+	afx_msg void OnInquireAllHistory();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 	

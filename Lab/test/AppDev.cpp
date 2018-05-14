@@ -5,6 +5,7 @@
 #include "test.h"
 #include "AppDev.h"
 #include "ZM124U.h"
+#include "AdoMySQLHelper.h"
 
 
 #ifdef _DEBUG
@@ -17,6 +18,7 @@ static char THIS_FILE[] = __FILE__;
 // CAppDev dialog
 extern CString now_password;
 extern unsigned char now_psw_type;
+extern CString now_username;
 
 
 BOOL isExcuted;
@@ -52,9 +54,10 @@ BEGIN_MESSAGE_MAP(CAppDev, CDialog)
 	ON_BN_CLICKED(IDC_RECHARGE_BUTTON, OnRechargeButton)
 	ON_BN_CLICKED(IDC_PAY_BUTTON, OnPayButton)
 	ON_WM_CTLCOLOR()
+	ON_WM_PAINT()
 	ON_BN_CLICKED(IDC_REMOVE_HISTORY, OnRemoveHistory)
 	ON_BN_CLICKED(IDC_INQUIRE_HISTORY, OnInquireHistory)
-	ON_WM_PAINT()
+	ON_BN_CLICKED(IDC_INQUIRE_ALL_HISTORY, OnInquireAllHistory)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -265,6 +268,7 @@ void CAppDev::Transform_CString_to_UnsignedChar(CString str,unsigned char* res){
 }
 
 void CAppDev::Write_To_History(int mode,int number){
+	//Write To Local
 	CFile file;
 	file.Open(FILE_NAME,CFile::modeCreate|CFile::modeNoTruncate|CFile::modeReadWrite);
 	CString tmp,tmp2;
@@ -275,6 +279,21 @@ void CAppDev::Write_To_History(int mode,int number){
 	tmp+=tmp2;
 	file.SeekToEnd();
 	file.Write(tmp,strlen(tmp));
+	
+	//Write To Database
+	CString operation_mode,operation_description,amount;
+	operation_mode.Format("%d",mode);
+	if(mode==INIT_WALLET_MODE) operation_description="Init Wallet Money";
+	else if(mode==RECHARGE_MODE) operation_description="Recharge";
+	else if(mode==PAY_MODE) operation_description="Pay";
+	amount.Format("%d",number);
+	
+	CAdoMySQLHelper sql;
+	sql.ConnectDB();
+	BOOL res=sql.ExecuteQuery(
+		"insert into record(username,operation_mode,operation_description,amount) values('"+now_username+"',"+operation_mode+",'"+operation_description+"',"+amount+");"
+	);
+	if(res==FALSE) MessageBox(mysql_error(sql.Get_m_pSQL()));
 }
 
 void CAppDev::Read_History(){
@@ -295,9 +314,11 @@ void CAppDev::Read_History(){
 void CAppDev::OnRemoveHistory() 
 {
 	// TODO: Add your control notification handler code here
+	m_history_edit.SetWindowText("");
+	CFileFind finder;
+	if(!finder.FindFile(FILE_NAME)) return;
 	CFile file;
 	file.Remove(FILE_NAME);
-	m_history_edit.SetWindowText("");
 }
 
 void CAppDev::OnInquireHistory() 
@@ -345,4 +366,24 @@ void CAppDev::OnPaint()
 	dc.SetStretchBltMode(COLORONCOLOR);
     dc.StretchBlt(0,0,rect.Width(),rect.Height(),&dcBmp,0,0,  
         m_bitmap.bmWidth,m_bitmap.bmHeight,SRCCOPY); 
+}
+
+void CAppDev::OnInquireAllHistory() 
+{
+	// TODO: Add your control notification handler code here
+	CString hint="This user's history is:\r\n";
+	CAdoMySQLHelper sql;
+	sql.ConnectDB();
+	BOOL res=sql.ExecuteQuery("select operation_description,amount from record where username='"+now_username+"';");
+	if(res==TRUE) {
+		MYSQL_ROW pSQLRow=NULL;
+		while(pSQLRow=mysql_fetch_row(sql.Get_m_pSQLResultSet())){
+			hint+=pSQLRow[0];
+			hint+=":";
+			hint+=pSQLRow[1];
+			hint+="\r\n";
+		}
+		m_history_edit.SetWindowText(hint);
+	}
+	else MessageBox(mysql_error(sql.Get_m_pSQL()));
 }
