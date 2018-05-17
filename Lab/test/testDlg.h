@@ -10,6 +10,7 @@
 
 #include "AppDev.h"
 #include "Debugger.h"
+#include "Web.h"
 #include "ZM124U.h"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -51,6 +52,7 @@ protected:
 private:
 	CDebugger m_MainDebugger;
 	CAppDev m_MainAppDev;
+	CWeb m_MainWeb;
 	
 public:
 	CString username_tmp;

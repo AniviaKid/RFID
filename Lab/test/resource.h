@@ -16,6 +16,10 @@
 #define IDB_BITMAP_RIVEN                133
 #define IDB_BITMAP_YASUO                135
 #define IDD_REGISTER                    136
+#define IDD_WEB                         137
+#define IDB_BITMAP1                     139
+#define IDB_BITMAP2                     140
+#define IDB_BITMAP3                     141
 #define IDC_TAB1                        1000
 #define IDC_EDIT_STATE                  1002
 #define IDC_EDIT_NUMBER                 1003
@@ -52,18 +56,21 @@
 #define IDC_USERNAME_EDIT               1041
 #define IDC_LOGIN_BUTTON                1042
 #define IDC_INQUIRE_ALL_HISTORY         1042
+#define IDC_TIME_EDIT                   1042
 #define IDC_REGISTERED_BUTTON           1043
 #define IDC_CONFIRM_EDIT                1046
 #define IDC_REGISTER                    1047
 #define IDC_BACK                        1048
+#define IDC_EXPLORER                    1051
+#define IDC_OK                          1052
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        142
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1050
+#define _APS_NEXT_CONTROL_VALUE         1054
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -2,28 +2,30 @@
 
 [General Info]
 Version=1
-LastClass=CAppDev
+LastClass=CLogin
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
 
-ClassCount=7
+ClassCount=8
 Class1=CTestApp
 Class2=CTestDlg
 Class3=CAboutDlg
 
-ResourceCount=7
-Resource1=IDD_TEST_DIALOG
+ResourceCount=8
+Resource1=IDD_APPDEV
 Resource2=IDR_MAINFRAME
-Resource3=IDD_ABOUTBOX
+Resource3=IDD_TEST_DIALOG
 Class4=CAppDev
-Resource4=IDD_LOGIN
+Resource4=IDD_REGISTER
 Class5=CDebugger
-Resource5=IDD_APPDEV
+Resource5=IDD_LOGIN
 Class6=CLogin
-Resource6=IDD_DEBUGGER
+Resource6=IDD_ABOUTBOX
 Class7=CREGISTER
-Resource7=IDD_REGISTER
+Resource7=IDD_DEBUGGER
+Class8=CWeb
+Resource8=IDD_WEB
 
 [CLS:CTestApp]
 Type=0
@@ -130,8 +132,8 @@ Control26=IDC_STATIC,static,1342308352
 Control27=IDC_PASSWORD_EDIT,edit,1350631552
 Control28=IDC_DEFAULT_PASSWORD,button,1342242816
 Control29=IDC_CARD_WR_BLOCK3_EDIT1,edit,1350631552
-Control30=IDC_CARD_WR_BLOCK3_EDIT2,edit,1484849280
-Control31=IDC_CARD_WR_BLOCK3_EDIT3,edit,1484849280
+Control30=IDC_CARD_WR_BLOCK3_EDIT2,edit,1350631552
+Control31=IDC_CARD_WR_BLOCK3_EDIT3,edit,1350631552
 Control32=IDC_STATIC,static,1342308352
 Control33=IDC_USERNAME_EDIT,edit,1484849280
 
@@ -141,7 +143,7 @@ HeaderFile=Debugger.h
 ImplementationFile=Debugger.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_USERNAME_EDIT
+LastObject=CDebugger
 VirtualFilter=dWC
 
 [DLG:IDD_LOGIN]
@@ -184,5 +186,23 @@ ImplementationFile=REGISTER.cpp
 BaseClass=CDialog
 Filter=D
 LastObject=IDC_BACK
+VirtualFilter=dWC
+
+[DLG:IDD_WEB]
+Type=1
+Class=CWeb
+ControlCount=4
+Control1=IDC_EXPLORER,{8856F961-340A-11D0-A96B-00C04FD705A2},1342242816
+Control2=IDC_OK,button,1342242816
+Control3=IDC_STATIC,static,1342308352
+Control4=IDC_TIME_EDIT,edit,1484849280
+
+[CLS:CWeb]
+Type=0
+HeaderFile=Web.h
+ImplementationFile=Web.cpp
+BaseClass=CDialog
+Filter=D
+LastObject=CWeb
 VirtualFilter=dWC
 

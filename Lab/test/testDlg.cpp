@@ -123,9 +123,11 @@ BOOL CTestDlg::OnInitDialog()
 	//My Code
 	m_MainMenu.InsertItem(0,"调试助手");
 	m_MainMenu.InsertItem(1,"应用开发");
+	m_MainMenu.InsertItem(2,"上机网管");
 	
 	m_MainDebugger.Create(IDD_DEBUGGER, GetDlgItem(IDC_TAB1));
 	m_MainAppDev.Create(IDD_APPDEV,GetDlgItem(IDC_TAB1));
+	m_MainWeb.Create(IDD_WEB,GetDlgItem(IDC_TAB1));
 	
 	CRect rect;
 	m_MainMenu.GetClientRect(&rect);
@@ -136,9 +138,11 @@ BOOL CTestDlg::OnInitDialog()
 	
 	m_MainDebugger.MoveWindow(&rect);
 	m_MainAppDev.MoveWindow(&rect);
+	m_MainWeb.MoveWindow(&rect);
 	
 	m_MainDebugger.ShowWindow(SW_SHOWNORMAL);
 	m_MainAppDev.ShowWindow(SW_HIDE);
+	m_MainWeb.ShowWindow(SW_HIDE);
 	m_MainMenu.SetCurSel(0);
 	m_MainMenu.ShowWindow(SW_HIDE);
 	CLogin login;
@@ -207,9 +211,18 @@ void CTestDlg::OnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult)
 	if(index==0){
 		m_MainDebugger.ShowWindow(SW_SHOWNORMAL);
 		m_MainAppDev.ShowWindow(SW_HIDE);
+		m_MainWeb.ShowWindow(SW_HIDE);
 	}
 	else if(index==1){
 		m_MainDebugger.ShowWindow(SW_HIDE);
 		m_MainAppDev.ShowWindow(SW_SHOWNORMAL);
+		m_MainWeb.ShowWindow(SW_HIDE);
+	}
+	else if(index==2){
+		m_MainDebugger.ShowWindow(SW_HIDE);
+		m_MainAppDev.ShowWindow(SW_HIDE);
+		m_MainWeb.ShowWindow(SW_SHOWNORMAL);
 	}
 }
+
+

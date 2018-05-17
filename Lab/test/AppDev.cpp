@@ -91,7 +91,7 @@ void CAppDev::OnInitWalletButton()
 				return;
 			}
 			init_account=_ttoi(str);
-			//Write_To_History(INIT_WALLET_MODE,(int)init_account);
+			Write_To_History(INIT_WALLET_MODE,(int)init_account);
 			
 			int return_state=write_account(cur_page,cur_block,now_psw_type,psw,init_account);
 			if(return_state!=0){
@@ -102,7 +102,7 @@ void CAppDev::OnInitWalletButton()
 				return;
 			}
 			
-			Write_To_History(1,(int)init_account);
+			//Write_To_History(1,(int)init_account);
 			isExcuted=TRUE;
 			m_state_edit.SetWindowText("初始化成功");
 		}
@@ -343,6 +343,8 @@ HBRUSH CAppDev::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 			pDC->SetTextColor(RGB(0,0,0));
 			break;
 	}
+	pDC->SetBkMode(TRANSPARENT);
+	hbr = (HBRUSH)::GetStockObject(NULL_BRUSH);
 	return hbr;
 }
 
@@ -358,12 +360,12 @@ void CAppDev::OnPaint()
     CDC   dcBmp;                                           //定义并创建一个内存设备环境  
     dcBmp.CreateCompatibleDC(&dc);                         //创建兼容性DC  
     CBitmap   bmpBackground;     
-    bmpBackground.LoadBitmap(IDB_BITMAP_YASUO);                 //载入资源中的IDB_BITMAP1图片  
+    bmpBackground.LoadBitmap(IDB_BITMAP2);                 //载入资源中的IDB_BITMAP1图片  
     BITMAP   m_bitmap;                                     //图片变量                  
     bmpBackground.GetBitmap(&m_bitmap);                    //将图片载入位图中  
     CBitmap   *pbmpOld=dcBmp.SelectObject(&bmpBackground); //将位图选入临时内存设备环境    
     //调用函数显示图片 StretchBlt显示形状可变  
-	dc.SetStretchBltMode(COLORONCOLOR);
+	//dc.SetStretchBltMode(COLORONCOLOR);
     dc.StretchBlt(0,0,rect.Width(),rect.Height(),&dcBmp,0,0,  
         m_bitmap.bmWidth,m_bitmap.bmHeight,SRCCOPY); 
 }

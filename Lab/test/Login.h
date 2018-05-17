@@ -38,6 +38,8 @@ protected:
 	//{{AFX_MSG(CLogin)
 	afx_msg void OnLoginButton();
 	afx_msg void OnRegisteredButton();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void OnPaint();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

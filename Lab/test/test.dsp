@@ -126,6 +126,14 @@ SOURCE=.\test.rc
 
 SOURCE=.\testDlg.cpp
 # End Source File
+# Begin Source File
+
+SOURCE=.\Web.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\webbrowser2.cpp
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
@@ -166,10 +174,30 @@ SOURCE=.\test.h
 
 SOURCE=.\testDlg.h
 # End Source File
+# Begin Source File
+
+SOURCE=.\Web.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\webbrowser2.h
+# End Source File
 # End Group
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=.\1.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=.\2.bmp
+# End Source File
+# Begin Source File
+
+SOURCE=.\3.bmp
+# End Source File
 # Begin Source File
 
 SOURCE=.\res\bitmap1.bmp
@@ -201,3 +229,12 @@ SOURCE=.\ReadMe.txt
 # End Source File
 # End Target
 # End Project
+# Section test : {D30C1661-CDAF-11D0-8A3E-00C04FC9E26E}
+# 	2:5:Class:CWebBrowser2
+# 	2:10:HeaderFile:webbrowser2.h
+# 	2:8:ImplFile:webbrowser2.cpp
+# End Section
+# Section test : {8856F961-340A-11D0-A96B-00C04FD705A2}
+# 	2:21:DefaultSinkHeaderFile:webbrowser2.h
+# 	2:16:DefaultSinkClass:CWebBrowser2
+# End Section

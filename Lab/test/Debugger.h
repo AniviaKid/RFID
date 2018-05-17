@@ -64,6 +64,7 @@ protected:
 private:
 	afx_msg void Clear_WR_View();
 	afx_msg void Transform_CString_to_UnsignedChar(CString str,unsigned char* ch);
+
 };
 
 //{{AFX_INSERT_LOCATION}}
