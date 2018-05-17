@@ -200,6 +200,10 @@ SOURCE=.\3.bmp
 # End Source File
 # Begin Source File
 
+SOURCE=.\4.bmp
+# End Source File
+# Begin Source File
+
 SOURCE=.\res\bitmap1.bmp
 # End Source File
 # Begin Source File

@@ -39,6 +39,8 @@ protected:
 	//{{AFX_MSG(CREGISTER)
 	afx_msg void OnRegister();
 	afx_msg void OnBack();
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void OnPaint();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

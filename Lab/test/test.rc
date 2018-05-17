@@ -433,6 +433,7 @@ IDB_BITMAP_YASUO        BITMAP  DISCARDABLE     "Yasuo.bmp"
 IDB_BITMAP1             BITMAP  DISCARDABLE     "1.bmp"
 IDB_BITMAP2             BITMAP  DISCARDABLE     "2.bmp"
 IDB_BITMAP3             BITMAP  DISCARDABLE     "3.bmp"
+IDB_BITMAP4             BITMAP  DISCARDABLE     "4.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CLogin
+LastClass=CWeb
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
@@ -13,17 +13,17 @@ Class2=CTestDlg
 Class3=CAboutDlg
 
 ResourceCount=8
-Resource1=IDD_APPDEV
+Resource1=IDD_DEBUGGER
 Resource2=IDR_MAINFRAME
-Resource3=IDD_TEST_DIALOG
+Resource3=IDD_APPDEV
 Class4=CAppDev
-Resource4=IDD_REGISTER
+Resource4=IDD_ABOUTBOX
 Class5=CDebugger
-Resource5=IDD_LOGIN
+Resource5=IDD_REGISTER
 Class6=CLogin
-Resource6=IDD_ABOUTBOX
+Resource6=IDD_TEST_DIALOG
 Class7=CREGISTER
-Resource7=IDD_DEBUGGER
+Resource7=IDD_LOGIN
 Class8=CWeb
 Resource8=IDD_WEB
 
@@ -185,7 +185,7 @@ HeaderFile=REGISTER.h
 ImplementationFile=REGISTER.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_BACK
+LastObject=CREGISTER
 VirtualFilter=dWC
 
 [DLG:IDD_WEB]
@@ -203,6 +203,6 @@ HeaderFile=Web.h
 ImplementationFile=Web.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=CWeb
+LastObject=IDC_EXPLORER
 VirtualFilter=dWC
 
