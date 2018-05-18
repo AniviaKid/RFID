@@ -42,7 +42,7 @@ BOOL CAdoMySQLHelper::ConnectDB(){
 		return FALSE;
 	}
 	mysql_options(m_pSQL,MYSQL_SET_CHARSET_NAME,"gb2312");
-	if(mysql_real_connect(m_pSQL,"a.aniviakid.cn","user1","user1","RFID",3306,NULL,0)==NULL){
+	if(mysql_real_connect(m_pSQL,"a.aniviakid.cn","root","westlife1412","RFID",3306,NULL,0)==NULL){
 		AfxMessageBox(mysql_error(m_pSQL));
 		return FALSE;
 	}

@@ -1,1 +1,5 @@
+Init Wallet Money:1000
+Init Wallet Money:1000
+Init Wallet Money:1000
+Init Wallet Money:1000
 Init Wallet Money:100
