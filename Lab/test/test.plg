@@ -6,13 +6,13 @@
 --------------------Configuration: test - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSP6A8E.tmp" with contents
+Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSPBB7B.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /Fp"Debug/test.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
-"D:\VC++6.0\Microsoft Visual Studio\MyProjects\Lab\test\AppDev.cpp"
+"D:\VC++6.0\Microsoft Visual Studio\MyProjects\Lab\test\Debugger.cpp"
 ]
-Creating command line "cl.exe @C:\Users\ASUS\AppData\Local\Temp\RSP6A8E.tmp" 
-Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSP6A8F.tmp" with contents
+Creating command line "cl.exe @C:\Users\ASUS\AppData\Local\Temp\RSPBB7B.tmp" 
+Creating temporary file "C:\Users\ASUS\AppData\Local\Temp\RSPBB7C.tmp" with contents
 [
 ZM124U.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/test.pdb" /debug /machine:I386 /out:"Debug/test.exe" /pdbtype:sept /libpath:"./libs" 
 ".\Debug\AdoMySQLHelper.obj"
@@ -27,10 +27,10 @@ ZM124U.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/test.pdb" /de
 ".\Debug\webbrowser2.obj"
 ".\Debug\test.res"
 ]
-Creating command line "link.exe @C:\Users\ASUS\AppData\Local\Temp\RSP6A8F.tmp"
+Creating command line "link.exe @C:\Users\ASUS\AppData\Local\Temp\RSPBB7C.tmp"
 <h3>Output Window</h3>
 Compiling...
-AppDev.cpp
+Debugger.cpp
 Linking...
 
 

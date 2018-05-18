@@ -298,7 +298,25 @@ void CDebugger::OnWriteBlock()
 				MessageBox("写块成功");
 			}
 			else if(cur_block==3){
-				
+				CString content,content1,content2,content3;
+				m_block3_edit1.GetWindowText(content1);
+				m_block3_edit2.GetWindowText(content2);
+				m_block3_edit3.GetWindowText(content3);
+				content=content1+content2+content3;
+				if(content.IsEmpty()){
+					MessageBox("请输入写入值");
+					return;
+				}
+				unsigned char src_data[16];
+				Transform_CString_to_UnsignedChar(content,src_data);
+				int return_state=write_block(cur_block,cur_page,pw_type,psw,src_data,content.GetLength());
+				if(return_state!=0){
+					CString tmp;
+					tmp.Format("%d",return_state);
+					MessageBox("写块失败,状态码为"+tmp);
+					return;
+				}
+				MessageBox("写块成功");
 			}
 		}
 	}
