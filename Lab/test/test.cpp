@@ -5,6 +5,9 @@
 #include "test.h"
 #include "testDlg.h"
 
+#pragma comment(lib,"./SkinPPWTL.lib")
+#include "SkinPPWTL.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -41,6 +44,7 @@ CTestApp theApp;
 
 BOOL CTestApp::InitInstance()
 {
+	skinppLoadSkin(_T("./Skin++/AquaOS/AquaOS.ssk"));
 	AfxEnableControlContainer();
 
 	// Standard initialization
@@ -71,4 +75,18 @@ BOOL CTestApp::InitInstance()
 	// Since the dialog has been closed, return FALSE so that we exit the
 	//  application, rather than start the application's message pump.
 	return FALSE;
+}
+
+int CTestApp::DoMessageBox(LPCTSTR lpszPrompt, UINT nType, UINT nIDPrompt) 
+{
+	// TODO: Add your specialized code here and/or call the base class
+	
+	return CWinApp::DoMessageBox(lpszPrompt, nType, nIDPrompt);
+}
+
+int CTestApp::ExitInstance() 
+{
+	// TODO: Add your specialized code here and/or call the base class
+	skinppExitSkin();
+	return CWinApp::ExitInstance();
 }

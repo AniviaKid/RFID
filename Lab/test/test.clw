@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CWeb
+LastClass=CTestApp
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "test.h"
@@ -32,6 +32,9 @@ Type=0
 HeaderFile=test.h
 ImplementationFile=test.cpp
 Filter=N
+BaseClass=CWinApp
+VirtualFilter=AC
+LastObject=CTestApp
 
 [CLS:CTestDlg]
 Type=0
@@ -203,6 +206,6 @@ HeaderFile=Web.h
 ImplementationFile=Web.cpp
 BaseClass=CDialog
 Filter=D
-LastObject=IDC_EXPLORER
+LastObject=CWeb
 VirtualFilter=dWC
 

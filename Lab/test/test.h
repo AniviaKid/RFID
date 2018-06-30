@@ -30,6 +30,8 @@ public:
 	//{{AFX_VIRTUAL(CTestApp)
 	public:
 	virtual BOOL InitInstance();
+	virtual int DoMessageBox(LPCTSTR lpszPrompt, UINT nType, UINT nIDPrompt);
+	virtual int ExitInstance();
 	//}}AFX_VIRTUAL
 
 // Implementation
